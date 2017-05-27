@@ -1,11 +1,10 @@
 package com.malaexpress.pageobjects;
 
+import com.malaexpress.util.WebUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 /**
  * Created by Administrator on 2017/5/26 0026.
@@ -13,26 +12,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SignInPage {
 
     public void fillInUsername(WebDriver driver, String username) {
-        WebElement usernameTextbox=driver.findElement(By.cssSelector("#identifierId"));
-        usernameTextbox.clear();
-        usernameTextbox.sendKeys(username);
-        WebElement next = driver.findElement(By.cssSelector("#identifierNext > content > span"));
-        next.click();
+        WebUtil.clearandsendkeys(driver,By.cssSelector("#identifierId"),username);
+        WebUtil.click(driver,By.cssSelector("#identifierNext > content > span"));
     }
 
     public void fillInPassword(WebDriver driver, String password) {
-        WebDriverWait wait= new WebDriverWait(driver,30);
-        WebElement passwordTextbox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")));
-        passwordTextbox.clear();
-        passwordTextbox.sendKeys(password);
+        WebUtil.waitforvisibility(driver,By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input"));
+        WebUtil.clearandsendkeys(driver,By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input"),password);
     }
 
     public EmailHomePage clickSignIn(WebDriver driver) {
-        WebDriverWait wait= new WebDriverWait(driver,30);
-        WebElement signInButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#passwordNext > content > span")));
-        signInButton.click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("gbqfb")));
+        WebUtil.waitandclick(driver,By.cssSelector("#passwordNext > content > span"));
+        WebUtil.waitforvisibility(driver,By.id("gbqfb"));
         return  PageFactory.initElements(driver,EmailHomePage.class);
     }
 

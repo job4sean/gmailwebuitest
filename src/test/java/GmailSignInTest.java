@@ -60,16 +60,15 @@ public class GmailSignInTest {
         SignInPage signInPage = WebUtil.goToSignInPage(driver);
         //fill in username
         signInPage.fillInUsername(driver,"vcamera4u");
-        //  driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
-        // WebElement next = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#passwd")));
+
 
         // Fill in password
-        //driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
+
         signInPage.fillInPassword(driver,"Lx9800128");
         //click sign in
         EmailHomePage emailHomePage = signInPage.clickSignIn(driver);
         // verify user did sign in
-        //driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
+
 
        // 2. click compose
         emailHomePage.clickComposeButton(driver);
