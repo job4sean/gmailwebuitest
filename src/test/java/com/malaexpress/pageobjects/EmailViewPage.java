@@ -12,12 +12,12 @@ import static com.malaexpress.util.WebUtil.*;
  */
 public class EmailViewPage {
     public String getEmailSubjectText(WebDriver driver) {
-        return WebUtil.getText(driver,By.cssSelector("[class='hP']"));
+        return WebUtil.getText(driver, By.cssSelector("[class='hP']"));
 
     }
 
     public String getEmailBodyText(WebDriver driver) {
-        return WebUtil.getText(driver,By.xpath("//div[contains(@class,'a3s')]/div[1]"));
+        return WebUtil.getText(driver, By.xpath("//div[contains(@class,'a3s')]/div[1]"));
 
     }
 }
